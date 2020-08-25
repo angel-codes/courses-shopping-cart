@@ -10,6 +10,9 @@ loadEventListeners();
 function loadEventListeners(){
     // When user click "Agregar al Carrito"
     coursesList.addEventListener('click', addCourse);
+
+    // Delete courses of the Shopping Cart
+    shoppingCart.addEventListener('click', removeCourse);
 }
 
 //* Functions
@@ -21,10 +24,24 @@ function addCourse(e){
     // Execute action only when the correct item is clicked
     if(e.target.classList.contains('agregar-carrito')){
         readCourseData(e.target.parentElement.parentElement); // Selected course
-        
     }
 
 }
+
+// Remove course from the shopping cart
+function removeCourse(e){
+    // Execute action only when the correct item is clicked
+    if(e.target.classList.contains('borrar-curso')){
+        // ID of the selected course
+        const idCourse = e.target.getAttribute('data-id');
+
+        // Remove from Array
+        shoppingCartProducts = shoppingCartProducts.filter(course => course.id !== idCourse);
+
+        // Update the HTML
+        shoppingCartHTML();
+    }
+};
 
 // Read the parent element of the clicked element
 function readCourseData(course){
