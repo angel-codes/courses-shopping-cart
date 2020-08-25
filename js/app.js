@@ -38,8 +38,24 @@ function readCourseData(course){
         quantity: 1
     };
 
-    // Add product to the Shopping Cart Products Array
-    shoppingCartProducts = [...shoppingCartProducts, courseInfo];
+    // Check if a course already exists in the shopping cart
+    const exists = shoppingCartProducts.some(course => course.id === courseInfo.id);
+    if(exists){
+        // Update the quantity of the product
+        const courses = shoppingCartProducts.map(course => {
+            if(course.id === courseInfo.id){
+                course.quantity++;
+                return course;
+            } else {
+                return course;
+            }
+        });
+        shoppingCartProducts = [...courses];
+    } else {
+        // Add product to the Shopping Cart Products Array
+        shoppingCartProducts = [...shoppingCartProducts, courseInfo];
+    }
+
     shoppingCartHTML();
 }
 
