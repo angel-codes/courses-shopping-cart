@@ -51,11 +51,20 @@ function shoppingCartHTML(){
 
     // Generate the HTML for each Course
     shoppingCartProducts.forEach(course => {
+        // Extract values
+        const { id, imagen, title, price, quantity } = course;
+
         // Create HTML template
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>
-                ${course.title}
+                <img src="${imagen}" width="100">
+            </td>
+            <td>${title}</td>
+            <td>${price}</td>
+            <td>${quantity}</td>
+            <td>
+                <a href="#" class="borrar-curso" data-id="${id}">X</a>
             </td>
         `;
 
@@ -64,7 +73,7 @@ function shoppingCartHTML(){
     });
 }
 
-// Delete Course from Shopping Cart
+// Prevent duplicates courses
 function clearHTML(){
     while(shoppingCartContainer.firstChild){
         shoppingCartContainer.removeChild(shoppingCartContainer.firstChild);
