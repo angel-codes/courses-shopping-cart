@@ -1,12 +1,13 @@
-// Global variables
+//* Global variables
 const shoppingCart          = document.querySelector('#carrito');
 const shoppingCartContainer = document.querySelector('#lista-carrito tbody');
 const shoppingCarCleaner    = document.querySelector('#vaciar-carrito');
 const coursesList           = document.querySelector('#lista-cursos');
+let   shoppingCartProducts  = [];
 
+//* Event listeners
 loadEventListeners();
 function loadEventListeners(){
-
     // When user click "Agregar al Carrito"
     coursesList.addEventListener('click', addCourse);
 }
@@ -37,4 +38,35 @@ function readCourseData(course){
         quantity: 1
     };
 
+    // Add product to the Shopping Cart Products Array
+    shoppingCartProducts = [...shoppingCartProducts, courseInfo];
+    shoppingCartHTML();
+}
+
+// Show shopping cart in HTML
+function shoppingCartHTML(){
+
+    // Clear HTML
+    clearHTML();
+
+    // Generate the HTML for each Course
+    shoppingCartProducts.forEach(course => {
+        // Create HTML template
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>
+                ${course.title}
+            </td>
+        `;
+
+        // Add HTML template in the tbody
+        shoppingCartContainer.appendChild(row);
+    });
+}
+
+// Delete Course from Shopping Cart
+function clearHTML(){
+    while(shoppingCartContainer.firstChild){
+        shoppingCartContainer.removeChild(shoppingCartContainer.firstChild);
+    }
 }
