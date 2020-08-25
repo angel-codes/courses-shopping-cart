@@ -1,6 +1,6 @@
 # Courses Shopping Cart
 
-Example of Shopping Cart with JavaScript part of the JavaScript course projects that I'm taking.
+Example of Shopping Cart with JavaScript part of the [JavaScript course](https://www.udemy.com/course/javascript-moderno-guia-definitiva-construye-10-proyectos/) projects that I'm taking.
 
 ## Setting up
 
