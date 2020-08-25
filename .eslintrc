@@ -1,0 +1,13 @@
+{
+    "parserOptions":{
+        "ecmaVersion": 6,
+        "sourceType": "script"
+    },
+    "rules": {
+        "semi":["error", "always"],
+        "linebreak-style": ["error", "windows"],
+        "quotes": ["error", "single"],
+        "indent": ["error", 4],
+        "no-console": ["warn"]
+    }
+}
