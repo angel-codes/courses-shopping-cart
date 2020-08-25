@@ -8,6 +8,12 @@ let shoppingCartProducts = [];
 //* Event listeners
 loadEventListeners();
 function loadEventListeners() {
+    // Show courses from LocalStorage
+    document.addEventListener('DOMContentLoaded', () => {
+        shoppingCartProducts = JSON.parse(localStorage.getItem('courses')) || [];
+        shoppingCartHTML(); // Show all of the courses from LS
+    });
+
     // When user click "Agregar al Carrito"
     coursesList.addEventListener('click', addCourse);
 
@@ -111,6 +117,13 @@ function shoppingCartHTML() {
         // Add HTML template in the tbody
         shoppingCartContainer.appendChild(row);
     });
+
+    // Shopping cart to the Local Storage
+    syncStorage();
+}
+
+function syncStorage(){
+    localStorage.setItem('courses', JSON.stringify(shoppingCartProducts));
 }
 
 // Prevent duplicates courses
